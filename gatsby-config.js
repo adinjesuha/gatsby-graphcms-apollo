@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `ABT Laboratorios Demo`,
@@ -7,13 +11,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-theme-apollo`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-graphql`,
       options: {
         typeName: "GCMS",
         fieldName: "gcsm",
-        url:
-          "https://api-uswest.graphcms.com/v1/ck363nwn700z101b4fb8j3tq5/master",
+        url: `${process.env.GATSBY_GRAPHCMS_API}`,
         refetchInterval: 60,
       },
     },
