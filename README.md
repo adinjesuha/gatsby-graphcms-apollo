@@ -1,3 +1,3 @@
-<h1 align="center">
+<h2>
   Testing Gatsby with Apollo and GraphCMS
-</h1>
+</h2>
