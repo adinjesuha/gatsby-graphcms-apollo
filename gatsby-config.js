@@ -1,11 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `ABT Laboratorios Demo`,
+    description: `Demo for ABT Lab Web App.`,
     author: `@gatsbyjs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-theme-apollo`,
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: "GCMS",
+        fieldName: "gcsm",
+        url:
+          "https://api-uswest.graphcms.com/v1/ck363nwn700z101b4fb8j3tq5/master",
+        refetchInterval: 60,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
