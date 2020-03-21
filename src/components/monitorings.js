@@ -64,7 +64,7 @@ const MonitoringItemWrapper = styled.li`
   }
   .controls {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 25px;
     display: flex;
     align-items: center;
     justify-content: flex-end;

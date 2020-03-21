@@ -322,13 +322,8 @@ hgroup {
   margin-bottom: 1.45rem;
 }
 ul {
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin: 0;
+  padding: 0;
   list-style-position: outside;
   list-style-type: none;
   list-style-image: none;
@@ -624,10 +619,14 @@ button {
   height: 2.375rem;
   padding: 0 1.125rem;
   font-size: 0.875rem;
-  border: 1px solid var(--border-color-main);
+  border: 1px solid transparent;
   border-radius: 4px;
   color: white;
   cursor: pointer;
+}
+
+button:focus {
+  outline: none;
 }
 
 button.danger {
@@ -638,6 +637,16 @@ button.primary {
 }
 button.success {
   background: #38b249;
+}
+button.ghost {
+  background: #fff;
+  color: #3e3f42;
+  font-size: 0.875rem;
+  padding: 0;
+}
+button.flex-content {
+  display: inline-flex;
+  align-items: center;
 }
 
 @media only screen and (max-width: 480px) {

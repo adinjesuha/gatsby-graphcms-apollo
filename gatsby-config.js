@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `ABT Laboratorios Demo`,
+    title: `ABT Demo`,
     description: `Demo for ABT Lab Web App.`,
     author: `@gatsbyjs`,
   },
