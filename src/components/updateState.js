@@ -11,7 +11,11 @@ const UpdateState = ({ id, completed }) => {
     refetchQueries: [{ query: ALL_MONITORING }],
     awaitRefetchQueries: true,
   })
-  return <button onClick={() => toggleCompletedMutation()}>Update</button>
+  return (
+    <button onClick={() => toggleCompletedMutation()}>
+      {loading ? "Completando..." : completed ? "Completado" : "Completar"}
+    </button>
+  )
 }
 
 export default UpdateState

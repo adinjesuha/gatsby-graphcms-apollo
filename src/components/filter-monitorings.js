@@ -19,8 +19,6 @@ const MonitoringFilters = ({ monitorings, currentFilter, filterResultsFn }) => {
     itemCount = monitorings.length - activeMonitorings.length
   }
 
-  console.log(itemCount)
-
   return (
     <div>
       <span>
@@ -31,16 +29,18 @@ const MonitoringFilters = ({ monitorings, currentFilter, filterResultsFn }) => {
 
       <ul>
         <li onClick={filterResultsHandler("all")}>
-          <a className={currentFilter === "all" ? "selected" : ""}>All</a>
+          <a className={currentFilter === "all" ? "selected" : ""}>Todos</a>
         </li>
 
         <li onClick={filterResultsHandler("active")}>
-          <a className={currentFilter === "active" ? "selected" : ""}>Active</a>
+          <a className={currentFilter === "active" ? "selected" : ""}>
+            Pendientes
+          </a>
         </li>
 
         <li onClick={filterResultsHandler("completed")}>
           <a className={currentFilter === "completed" ? "selected" : ""}>
-            Completed
+            Completados
           </a>
         </li>
       </ul>

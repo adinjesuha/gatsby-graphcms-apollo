@@ -11,9 +11,10 @@ export const ALL_MONITORING = gql`
         name
       }
       samples {
+        id
         name
         sampleType
-        parameters {
+        parameters(orderBy: parameterType_ASC) {
           id
           name
           parameterType
