@@ -7,7 +7,6 @@ import Monitorings from "../components/monitorings"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h2>Monitoreos</h2>
     <Monitorings />
   </Layout>
 )

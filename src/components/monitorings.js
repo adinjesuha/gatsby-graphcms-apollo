@@ -1,12 +1,13 @@
 import React, { useState, Fragment } from "react"
+import { Link } from "gatsby"
 import { useQuery } from "@apollo/react-hooks"
 import styled from "styled-components"
 
 import { ALL_MONITORING } from "./operations/queries"
-import UpdateState from "./updateState"
+import MakeDone from "./makeDone"
 import MonitoringFilters from "./filter-monitorings"
 
-const SamplCardWrapper = styled.div`
+const SampleCardWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.06);
   border-radius: 4px;
   padding: 20px;
@@ -32,7 +33,7 @@ const MonitoringItemWrapper = styled.li`
   background-color: rgba(0, 0, 0, 0.03);
   border-radius: 4px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   .monitoring-item--header {
     display: flex;
     justify-content: space-between;
@@ -65,16 +66,40 @@ const MonitoringItemWrapper = styled.li`
     width: 100%;
     margin-top: 10px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: flex-end;
     & > * {
+      &:nth-child(2) {
+        margin: 0 10px;
+      }
       flex: 0 0 auto;
+    }
+    a.buttton {
+      display: inline-flex;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+      vertical-align: middle;
+      transition: all 0.2s;
+      font-weight: 400;
+      position: relative;
+      justify-content: center;
+      height: 2.375rem;
+      padding: 0 1.125rem;
+      font-size: 0.875rem;
+      border: 1px solid var(--border-color-main);
+      border-radius: 4px;
+      color: white;
+      &.edit {
+        background: #38b249 !important;
+      }
     }
   }
 `
 
 const SampleCard = ({ sample }) => (
-  <SamplCardWrapper>
-    {console.log(sample)}
+  <SampleCardWrapper>
     <p>
       {sample.name} | {sample.sampleType}
     </p>
@@ -83,7 +108,7 @@ const SampleCard = ({ sample }) => (
         <li key={id}>{name}</li>
       ))}
     </ul>
-  </SamplCardWrapper>
+  </SampleCardWrapper>
 )
 
 export const MonitoringItem = ({ monitoring }) => (
@@ -107,7 +132,19 @@ export const MonitoringItem = ({ monitoring }) => (
       ))}
     </div>
     <div className="controls">
-      <UpdateState id={monitoring.id} completed={monitoring.completed} />
+      <Link
+        to={`/editar-monitoreo`}
+        state={{ monitoring }}
+        className="buttton edit"
+      >
+        Editar
+      </Link>
+      <MakeDone
+        classNames="primary"
+        id={monitoring.id}
+        completed={monitoring.completed}
+      />
+      <button className="danger">Eliminar</button>
     </div>
   </MonitoringItemWrapper>
 )
