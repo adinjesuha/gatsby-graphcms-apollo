@@ -635,6 +635,12 @@ button.danger {
 button.primary {
   background: #1665d8;
 }
+
+button.primary.loading,
+button.danger.loading {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 button.success {
   background: #38b249;
 }

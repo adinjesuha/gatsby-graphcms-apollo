@@ -1,15 +1,18 @@
 import React from "react"
 import { useMutation } from "@apollo/react-hooks"
 
-import { ALL_MONITORING } from "./operations/queries"
-import { TOGGLE_STATE } from "./operations/mutations"
+import { ALL_MONITORINGS } from "./operations/queries"
+import { UPDATE_MONITORING_STATE } from "./operations/mutations"
 
 const MakeDone = ({ id, completed, ...otherProps }) => {
-  const [toggleCompletedMutation, { loading }] = useMutation(TOGGLE_STATE, {
-    variables: { id: id, completed: !completed },
-    refetchQueries: [{ query: ALL_MONITORING }],
-    awaitRefetchQueries: true,
-  })
+  const [toggleCompletedMutation, { loading }] = useMutation(
+    UPDATE_MONITORING_STATE,
+    {
+      variables: { id },
+      refetchQueries: [{ query: ALL_MONITORINGS }],
+      awaitRefetchQueries: true,
+    }
+  )
   return (
     <button
       className={otherProps.classNames}

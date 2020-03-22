@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { useQuery } from "@apollo/react-hooks"
 import styled from "styled-components"
 
-import { ALL_MONITORING } from "./operations/queries"
+import { ALL_MONITORINGS } from "./operations/queries"
 import MakeDone from "./makeDone"
 import MonitoringFilters from "./filter-monitorings"
 
@@ -191,7 +191,7 @@ const MonitoringList = ({ monitorings }) => {
 }
 
 const Monitorings = () => {
-  const { loading, error, data } = useQuery(ALL_MONITORING)
+  const { loading, error, data } = useQuery(ALL_MONITORINGS)
   if (loading) {
     return <div>Loading...</div>
   }
