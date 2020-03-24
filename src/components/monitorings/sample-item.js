@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Tag } from "./tag"
 import { removeDash } from "../../utils/removeDash"
 import ParameterItem from "./parameter-item"
 
@@ -42,8 +41,8 @@ const Wrapper = styled.div`
 const SampleItem = ({ sample }) => (
   <Wrapper>
     <p>
-      {sample.name}
-      <span>{removeDash(sample.sampleType)}</span>
+      {sample.name} ({sample.parameters.length} parametros)
+      <span>{removeDash(sample.sampleType)} </span>
     </p>
     <ul>
       {sample.parameters.map(({ id, name, testType }) => (

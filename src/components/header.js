@@ -11,7 +11,7 @@ const HeaderWrapper = styled.header`
   position: fixed;
   width: 100%;
   background: white;
-  border-bottom: 1px solid #eaedf3;
+  border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   nav {
     margin: 0 auto;
@@ -30,7 +30,7 @@ const HeaderWrapper = styled.header`
       }
       .nav-links {
         display: flex;
-        border-left: 1px solid #eaedf3;
+        border-left: 1px solid var(--border-color);
         margin-left: 15px;
         li {
           padding: 0;
@@ -41,7 +41,7 @@ const HeaderWrapper = styled.header`
             text-decoration: none;
             &.active-link {
               font-weight: 500;
-              color: #1665d8;
+              color: var(--purple);
             }
           }
         }

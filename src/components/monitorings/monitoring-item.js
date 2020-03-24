@@ -64,7 +64,7 @@ const MonitoringItem = ({ monitoring }) => (
   <Wrapper>
     <div className="item__header">
       <div className="item__header--left">
-        <Tag>{monitoring.correlative}</Tag>
+        <Tag className="correlative">{monitoring.correlative}</Tag>
         <div className="company-info-monitoring">
           <h4>{monitoring.company.name}</h4>
           <p>

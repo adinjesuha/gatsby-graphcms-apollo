@@ -647,6 +647,7 @@ button:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .button.danger {
@@ -657,11 +658,18 @@ button:focus {
   background: var(--purple);
   color: white;
 }
+.button.primary:hover {
+  background: #3c4ae3;
+}
 
 .button.secondary {
   background: white;
   color: var(--purple);
   border: 1px solid var(--purple);
+}
+.button.secondary:hover {
+  background: #3c4ae3;
+  color: white;
 }
 
 .button .primary.loading,

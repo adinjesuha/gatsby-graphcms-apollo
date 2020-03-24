@@ -2,12 +2,13 @@ import React from "react"
 import styled from "styled-components"
 
 const TabFilters = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   font-size: 14px;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   ul {
     margin: 0;
     display: flex;
@@ -19,7 +20,7 @@ const TabFilters = styled.div`
         border-bottom: 3px solid transparent;
         &.selected {
           font-weight: 500;
-          border-bottom-color: #1665d8;
+          border-bottom-color: var(--purple);
         }
       }
     }

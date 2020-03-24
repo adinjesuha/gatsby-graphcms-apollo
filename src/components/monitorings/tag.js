@@ -7,6 +7,10 @@ export const Tag = styled.span`
   padding: 2px 14px;
   font-size: 11px;
   font-weight: bold;
+  &.correlative {
+    background: var(--pink-rgba);
+    color: var(--pink);
+  }
   &.completed {
     background: var(--green-rgba);
     color: var(--green);
