@@ -1,8 +1,8 @@
 import React, { Fragment } from "react"
 import { useQuery, useMutation } from "@apollo/react-hooks"
-import gql from "graphql-tag"
 
 import {
+  ALL_MONITORINGS,
   SINGLE_MONITORING,
   ALL_PARAMETERS,
   ALL_SAMPLES_FOR_MONITORING,
@@ -21,6 +21,9 @@ const Parameter = ({ sampleId, parameter, monitoringID, ...otherProps }) => {
         query: ALL_SAMPLES_FOR_MONITORING,
         variables: { monitoringID },
       },
+      {
+        query: ALL_MONITORINGS,
+      },
     ],
     awaitRefetchQueries: true,
   })
@@ -33,6 +36,9 @@ const Parameter = ({ sampleId, parameter, monitoringID, ...otherProps }) => {
       {
         query: ALL_SAMPLES_FOR_MONITORING,
         variables: { monitoringID },
+      },
+      {
+        query: ALL_MONITORINGS,
       },
     ],
     awaitRefetchQueries: true,

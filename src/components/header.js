@@ -60,6 +60,16 @@ const HeaderWrapper = styled.header`
             fill: #9fa5b8;
           }
         }
+        .message-alert {
+          background-color: var(--red);
+          border-radius: 50%;
+          border: 2px solid white;
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          top: 10px;
+          right: -2px;
+        }
         .avatar {
           width: 30px;
           height: 30px;
@@ -108,10 +118,11 @@ const Header = ({ siteTitle }) => (
       </div>
       <div className="right-side">
         <div className="user-options">
-          <button className="ghost flex-content">
+          <button className=" button ghost flex-content">
+            <i className="message-alert" />
             <FaBell />
           </button>
-          <button className="ghost flex-content">
+          <button className="button ghost flex-content">
             <span className="avatar">
               <img src={Avatar} alt="avatar" />
             </span>

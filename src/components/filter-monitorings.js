@@ -5,8 +5,8 @@ const TabFilters = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 16px;
-  border-bottom: 1px solid #eaedf3;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 15px;
   ul {
     margin: 0;
@@ -28,7 +28,7 @@ const TabFilters = styled.div`
     margin: 0;
     span {
       font-weight: 700;
-      background: #facf55;
+      background-color: var(--yellow);
       color: white;
       font-size: 1rem;
       border-radius: 4px;
@@ -76,7 +76,7 @@ const MonitoringFilters = ({ monitorings, currentFilter, filterResultsFn }) => {
       <ul>
         <li onClick={filterResultsHandler("active")}>
           <a className={currentFilter === "active" ? "selected" : ""}>
-            Pendientes
+            En progreso
           </a>
         </li>
 

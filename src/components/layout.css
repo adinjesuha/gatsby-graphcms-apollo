@@ -1,3 +1,22 @@
+:root {
+  --green: #38c3a3;
+  --green-rgba: rgba(56, 195, 163, 0.15);
+  --red: #ce2638;
+  --red-rgba: rgba(206, 38, 51, 0.1);
+  --yellow: #ffb82e;
+  --blue: #1d61dc;
+  --blue-rgba: rgba(29, 97, 220, 0.1);
+  --purple: #5160ff;
+  --purple-rgba: rgba(110, 54, 209, 0.1);
+  --pink: #c73fa8;
+  --pink-rgba: rgba(251, 225, 245, 1);
+
+  --black: #010101;
+  --dark-grey: #7a7a83;
+  --grey: #fafafa;
+  --border-color: #eaedf3;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -199,7 +218,8 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: hsla(0, 0%, 0%, 0.8);
+  background-color: var(--grey);
+  color: var(--black);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: normal;
@@ -361,6 +381,7 @@ dd {
   margin-bottom: 1.45rem;
 }
 p {
+  color: var(--dark-grey);
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -601,58 +622,69 @@ pre tt:after {
 }
 
 button {
-  display: inline-flex;
-  align-items: center;
-  text-align: center;
-  text-decoration: none;
   white-space: nowrap;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.2s;
   transition: all 0.2s;
   font-weight: 400;
-  position: relative;
-  justify-content: center;
-  height: 2.375rem;
-  padding: 0 1.125rem;
-  font-size: 0.875rem;
   border: 1px solid transparent;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
 }
 
 button:focus {
   outline: none;
 }
 
-button.danger {
-  background: #e6492d;
-}
-button.primary {
-  background: #1665d8;
-}
-
-button.primary.loading,
-button.danger.loading {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-button.success {
-  background: #38b249;
-}
-button.ghost {
-  background: #fff;
+.button {
   color: #3e3f42;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0 1.025rem;
+  height: 2.175rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button.danger {
+  background: #e6492d;
+  color: white;
+}
+.button.primary {
+  background: var(--purple);
+  color: white;
+}
+
+.button.secondary {
+  background: white;
+  color: var(--purple);
+  border: 1px solid var(--purple);
+}
+
+.button .primary.loading,
+.button .danger.loading {
+  background: rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.button.success {
+  background: #38b249;
+  color: white;
+}
+
+.button.ghost {
+  background: #fff;
   font-size: 0.875rem;
   padding: 0;
 }
-button.flex-content {
+
+.button.flex-content {
   display: inline-flex;
   align-items: center;
+  position: relative;
 }
 
 @media only screen and (max-width: 480px) {

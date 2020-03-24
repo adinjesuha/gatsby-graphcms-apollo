@@ -7,6 +7,7 @@ export const ALL_MONITORINGS = gql`
       id
       completed
       correlative
+      samplingDate
       company {
         name
       }
@@ -18,6 +19,7 @@ export const ALL_MONITORINGS = gql`
           id
           name
           parameterType
+          testType
         }
       }
     }
@@ -67,6 +69,7 @@ export const ALL_SAMPLES_FOR_MONITORING = gql`
   }
 `
 
+// All parameters for one sample
 export const ALL_PARAMETERS_FOR_SAMPLE = gql`
   query allPrametersForSample($sampleID: ID!) {
     parameters(where: { sample: { id: $sampleID } }) {
