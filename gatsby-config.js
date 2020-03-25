@@ -13,12 +13,33 @@ module.exports = {
     `gatsby-theme-apollo`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: `gatsby-source-graphql`,
+      resolve: `gatsby-plugin-modal-routing`,
       options: {
-        typeName: "GCMS",
-        fieldName: "gcsm",
-        url: `${process.env.GATSBY_GRAPHCMS_API}`,
-        refetchInterval: 60,
+        modalProps: {
+          contentLabel: `Modal`,
+          style: {
+            overlay: {
+              position: `fixed`,
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: `rgba(0, 0, 0, 0.75)`,
+            },
+            content: {
+              position: `absolute`,
+              border: `none`,
+              background: `none`,
+              padding: 0,
+              top: 0,
+              bottom: 0,
+              right: 0,
+              left: 0,
+              overflow: `auto`,
+              WebkitOverflowScrolling: `touch`,
+            },
+          },
+        },
       },
     },
     {
