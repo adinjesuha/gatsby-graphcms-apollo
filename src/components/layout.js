@@ -8,8 +8,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 
 import Header from "./header"
+import Modal from "./modal"
 import "./layout.css"
 
 const Layout = ({ children }) => {

@@ -87,8 +87,13 @@ const MonitoringItem = ({ monitoring }) => (
     {!monitoring.completed && (
       <div className="item__controls">
         <Link
-          to={`/editar-monitoreo`}
-          state={{ monitoring }}
+          data-testid="monitoring"
+          to={`/modal-test/`}
+          state={{
+            modal: true,
+            loadTransition: true,
+            monitoring,
+          }}
           className="button secondary"
         >
           Editar

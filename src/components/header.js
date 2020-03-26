@@ -12,7 +12,7 @@ const HeaderWrapper = styled.header`
   width: 100%;
   background: white;
   border-bottom: 1px solid var(--border-color);
-  z-index: 1000;
+  z-index: 2;
   nav {
     margin: 0 auto;
     max-width: 1200px;

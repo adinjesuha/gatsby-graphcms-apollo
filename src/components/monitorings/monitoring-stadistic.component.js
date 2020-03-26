@@ -78,24 +78,6 @@ const StadisticMonitor = styled.article`
 `
 
 const MonitoringStadistic = ({ children }) => {
-  // const [fixedPosition, setFixedPosition] = useState(false)
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.pageYOffset > 68) {
-  //       if (!fixedPosition) {
-  //         setFixedPosition(true)
-  //       }
-  //     } else if (fixedPosition) {
-  //       setFixedPosition(false)
-  //     }
-  //   }
-
-  //   window.addEventListener("scroll", handleScroll)
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll)
-  //   }
-  // }, [fixedPosition])
   return (
     <StadisticMonitor className="sticky">
       <header>

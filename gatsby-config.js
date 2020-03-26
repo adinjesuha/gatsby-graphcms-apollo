@@ -16,7 +16,6 @@ module.exports = {
       resolve: `gatsby-plugin-modal-routing`,
       options: {
         modalProps: {
-          contentLabel: `Modal`,
           style: {
             overlay: {
               position: `fixed`,
@@ -25,6 +24,7 @@ module.exports = {
               right: 0,
               bottom: 0,
               backgroundColor: `rgba(0, 0, 0, 0.75)`,
+              zIndex: "3",
             },
             content: {
               position: `absolute`,
@@ -39,6 +39,7 @@ module.exports = {
               WebkitOverflowScrolling: `touch`,
             },
           },
+          contentLabel: `Modal`,
         },
       },
     },
