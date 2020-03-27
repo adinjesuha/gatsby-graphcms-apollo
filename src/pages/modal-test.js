@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { navigate } from "gatsby"
 import styled from "styled-components"
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
 import { IoMdClose } from "react-icons/io"
+import { Gator } from "../components/modal"
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,36 +27,33 @@ const ChildWrapper = styled.div`
   max-width: 620px;
 `
 
-const ChildrenComponent = styled.div`
-  background: white;
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  height: 80vh;
-  border-radius: 8px;
-`
+const ModalExamplePage = ({ location }) => {
+  const [entered, setEntered] = useState(location)
+  const handelUnmount = () => {
+    setEntered(false)
+    setTimeout(() => {
+      navigate("/", { state: { noScroll: true } })
+    }, 200)
+  }
+  return (
+    <ModalRoutingContext.Consumer>
+      {({ modal }) => (
+        <Wrapper onClick={handelUnmount}>
+          {modal ? (
+            <IoMdClose data-testid="modal-close" onClick={handelUnmount} />
+          ) : null}
 
-const ModalExamplePage = ({ location }) => (
-  <ModalRoutingContext.Consumer>
-    {({ modal }) => (
-      <Wrapper onClick={() => navigate("/", { state: { noScroll: true } })}>
-        {modal ? (
-          <IoMdClose
-            data-testid="modal-close"
-            onClick={() => navigate(`/`, { state: { noScroll: true } })}
-          />
-        ) : null}
-
-        <ChildWrapper>
-          <ChildrenComponent onClick={e => e.stopPropagation()}>
-            <h2>{location.state.monitoring.company.name}</h2>
-          </ChildrenComponent>
-        </ChildWrapper>
-      </Wrapper>
-    )}
-  </ModalRoutingContext.Consumer>
-)
+          <ChildWrapper>
+            <Gator
+              in={entered}
+              stopProp={e => e.stopPropagation()}
+              monitoring={location.state.monitoring}
+            />
+          </ChildWrapper>
+        </Wrapper>
+      )}
+    </ModalRoutingContext.Consumer>
+  )
+}
 
 export default ModalExamplePage

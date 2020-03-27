@@ -76,7 +76,6 @@ const StadisticMonitor = styled.article`
     }
   }
 `
-
 const MonitoringStadistic = ({ children }) => {
   return (
     <StadisticMonitor className="sticky">
