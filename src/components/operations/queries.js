@@ -72,10 +72,12 @@ export const ALL_SAMPLES_FOR_MONITORING = gql`
 // All parameters for one sample
 export const ALL_PARAMETERS_FOR_SAMPLE = gql`
   query allPrametersForSample($sampleID: ID!) {
-    parameters(where: { sample: { id: $sampleID } }) {
-      id
-      name
-      testType
+    sample(where: { id: $sampleID }) {
+      parameters{
+        id
+        name
+        testType
+      }
     }
   }
 `

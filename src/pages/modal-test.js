@@ -47,7 +47,10 @@ const ModalExamplePage = ({ location }) => {
             <Gator
               in={entered}
               stopProp={e => e.stopPropagation()}
-              monitoring={location.state.monitoring}
+              sample={location.state.sample}
+              company={location.state.otherProps.company}
+              correlative={location.state.otherProps.correlative}
+              monitoringID={location.state.otherProps.monitoringID}
             />
           </ChildWrapper>
         </Wrapper>
@@ -57,3 +60,5 @@ const ModalExamplePage = ({ location }) => {
 }
 
 export default ModalExamplePage
+
+

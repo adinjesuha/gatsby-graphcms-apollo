@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
 import MakeDone from "../makeDone"
@@ -81,23 +80,13 @@ const MonitoringItem = ({ monitoring }) => (
     </div>
     <div className="item__body">
       {monitoring.samples.map(sample => (
-        <SampleItem key={sample.id} sample={sample} />
+        <>
+          <SampleItem key={sample.id} sample={sample} correlative={monitoring.correlative} company={monitoring.company.name} monitoringID={monitoring.id} completed={monitoring.completed}/>
+        </>
       ))}
     </div>
     {!monitoring.completed && (
       <div className="item__controls">
-        <Link
-          data-testid="monitoring"
-          to={`/modal-test/`}
-          state={{
-            modal: true,
-            loadTransition: true,
-            monitoring,
-          }}
-          className="button secondary"
-        >
-          Editar
-        </Link>
         <MakeDone
           classNames="button primary"
           id={monitoring.id}
