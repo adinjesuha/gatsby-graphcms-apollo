@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { CSSTransition } from "react-transition-group"
 import { useQuery, useMutation } from "@apollo/react-hooks"
@@ -15,6 +15,7 @@ import {
   REMOVE_PARAMETER, 
   ADD_PARAMETER 
 } from './operations/mutations'
+import Filters from "./filters"
 
 const Wrapper = styled.div`
   background: white;
@@ -72,7 +73,23 @@ const Body = styled.div`
 `
 
 const ParamsWrapper = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  .header{
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p{
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+  .body{
+    padding: 20px;
+  }
 `
 
 const ParameterWrapper = styled.div`
@@ -154,13 +171,11 @@ const Parameter = ({sampleID, addParam, ...parameter}) => {
         </React.Fragment>
         )
     }
-      
-      
     </ParameterWrapper>
   )
 }
 
-const CurrentParams = ({sampleID}) => {
+const ParameterList = ({sampleID}) => {
   const {loading, error, data} = useQuery(ALL_PARAMETERS_FOR_SAMPLE, {variables: { sampleID }})
 
   if (loading) {
@@ -172,25 +187,55 @@ const CurrentParams = ({sampleID}) => {
     return <div>Error!</div>
   }
   return(
-    <ParamsWrapper>
-      <p>Selecciona los parametros que deseas eliminar</p>
-      {data.sample.parameters.map(parameter => (
-        <Parameter 
-          key={parameter.id} 
-          sampleID={sampleID}
-          {...parameter}
-        />
-      ))}
+    <React.Fragment>
+      <CurrentParams 
+        parameters={data.sample.parameters}
+        sampleID={sampleID}
+      />
       <FilteredParams 
         sampleID={sampleID}
         currentParameters={data.sample.parameters}
       />
+    </React.Fragment>
+  )
+}
+
+const CurrentParams = ({parameters, sampleID}) => {
+
+  return (
+    <ParamsWrapper>
+      <div className="header">
+        <p>Parametros actuales</p>
+      </div>
+      <div className="body">
+        {parameters.map(parameter => (
+          <Parameter 
+            key={parameter.id} 
+            sampleID={sampleID}
+            {...parameter}
+          />
+        ))}
+      </div>
     </ParamsWrapper> 
   )
 }
 
+
+
 const FilteredParams = ({ sampleID, currentParameters }) => {
-  const { loading, error, data } = useQuery(ALL_PARAMETERS)
+  const [ state, setState ] = useState({
+    filter: "indicadores"
+  })
+
+  const filterResults = filter => {
+    setState({
+      ...state,
+      filter: filter,
+    })
+  }
+
+  const { loading, error, data } = useQuery(ALL_PARAMETERS);
+
   if (loading) {
     return <div>Loading...</div>
   }
@@ -199,23 +244,54 @@ const FilteredParams = ({ sampleID, currentParameters }) => {
     console.error(error)
     return <div>Error!</div>
   }
+
   let filteredParameters = data.parameters.filter(
     parameter =>
       !currentParameters.find(
         currentParameter => currentParameter.id === parameter.id
       )
   )
+
+  let parameters = filteredParameters
+
+  if(state.filter === "indicadores"){
+    parameters = filteredParameters.filter(
+      parameter => parameter.parameterType === "Indicador"
+    )
+  }else if (state.filter === "patogenos"){
+    parameters = filteredParameters.filter(
+      parameter => parameter.parameterType === "Patogeno"
+    )
+  }else {
+    parameters = filteredParameters.filter(
+      parameter => parameter.parameterType === "Micotoxina"
+    )
+  }
+
+  const parameterList = []
+  parameters.forEach((parameter) => {
+    parameterList.push(
+      <Parameter 
+        key={parameter.id} 
+        sampleID={sampleID}
+        addParam={true}
+        {...parameter}
+      />
+    )
+  })
+
   return (
     <ParamsWrapper>
-      <p>Selecciona los parametros que deseas agregar</p>
-      {filteredParameters.map(parameter => (
-        <Parameter 
-          key={parameter.id} 
-          sampleID={sampleID}
-          addParam={true}
-          {...parameter}
+      <div className="header">
+        <p>Agregar parametro</p>
+        <Filters 
+          currentFilter={state.filter}
+          filterResultsFn={filterResults}
         />
-      ))}
+      </div>
+      <div className="body">
+        {parameterList}
+      </div>
     </ParamsWrapper>
   )
 }
@@ -249,7 +325,7 @@ export const Gator = ({
             <h4>{sample.name}</h4>
             <p>{removeDash(sample.sampleType)}</p>
           </div>
-          <CurrentParams sampleID={sample.id}/>
+          <ParameterList sampleID={sample.id}/>
         </Body>
       </Wrapper>
     </CSSTransition>

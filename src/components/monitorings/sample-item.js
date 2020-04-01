@@ -33,23 +33,19 @@ const Wrapper = styled.div`
       align-items: center;
       justify-content: space-between;
       .control-buttons{
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 14px;
+        font-size: 12px;
         border-radius: 50%;
         cursor: pointer;
         margin-right: 6px;
-        background-color: var(--grey);
-        color: var(--dark-grey);
+        background-color: var(--white-smoke);
+        color: var(--grey);
         &:last-child{
           margin-right: 0;
-        }
-        &__edit{
-          background-color: var(--grey);
-          color: var(--dark-grey);
         }
         &__delete{
           background-color: var(--red-rgba);
@@ -95,12 +91,12 @@ const SampleItem = ({ sample, ...otherProps }) => (
           >
             <FaPen />
           </Link>
-          <button className="control-buttons">
-            <FaEllipsisV />
-          </button>
-          <button className="control-buttons control-buttons__delete">
+          {/*<button className="control-buttons control-buttons__delete">
             <FaTimes />
           </button>
+          <button className="control-buttons">
+            <FaEllipsisV />
+          </button>*/}
         </React.Fragment>
       )}
       </div>

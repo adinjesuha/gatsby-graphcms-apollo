@@ -6,15 +6,25 @@
   --yellow: #ffb82e;
   --blue: #1d61dc;
   --blue-rgba: rgba(29, 97, 220, 0.1);
-  --purple: #5160ff;
-  --purple-rgba: rgba(110, 54, 209, 0.1);
+  --purple: #613cea;
+  --purple-rgba: #f6f4fe;
   --pink: #c73fa8;
   --pink-rgba: rgba(251, 225, 245, 1);
 
-  --black: #010101;
-  --dark-grey: #7a7a83;
-  --grey: #fafafa;
-  --border-color: #eaedf3;
+  /* for heading and important text */
+  --yankees-blue: #132538;
+  /* for normal text */
+  --dark-grey: #737a83;
+  /* for normal state background buttons or UI elements */
+  --white-smoke: #f3f5f7;
+  /* for normal state icons and text */
+  --grey: #b6babd;
+  /* for borders */
+  --snow-dark: #efefef;
+  /* for background UI elements */
+  --snow: #fcfbfc;
+  /* Borders */
+  --border-color: var(--snow-dark);
 }
 
 html {
@@ -261,8 +271,7 @@ html {
 }
 
 body {
-  background-color: var(--grey);
-  color: var(--black);
+  color: var(--yankees-blue);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: normal;

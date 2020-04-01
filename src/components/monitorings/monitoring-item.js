@@ -9,13 +9,11 @@ import { formattingDate } from "../../utils/formattingDate"
 const Wrapper = styled.li`
   background-color: white;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 40px;
   max-width: 560px;
   transition: all 0.3s ease;
-  &:hover {
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
-  }
   .item__header {
     border-bottom: 1px solid var(--border-color);
     display: flex;

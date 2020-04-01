@@ -91,6 +91,7 @@ const MonitoringFilters = ({ monitorings, currentFilter, filterResultsFn }) => {
           <a className={currentFilter === "all" ? "selected" : ""}>Todos</a>
         </li>
       </ul>
+      
     </TabFilters>
   )
 }

@@ -1,6 +1,6 @@
 import gql from "graphql-tag"
 
-// Query all Monitorings
+// All Monitorings
 export const ALL_MONITORINGS = gql`
   query {
     monitorings {
@@ -33,20 +33,7 @@ export const ALL_PARAMETERS = gql`
       id
       name
       testType
-    }
-  }
-`
-
-// Query a Single Monitoring
-export const SINGLE_MONITORING = gql`
-  query singleMonitoring($id: ID!) {
-    monitoring(where: { id: $id }) {
-      id
-      completed
-      correlative
-      company {
-        name
-      }
+      parameterType
     }
   }
 `
@@ -77,6 +64,22 @@ export const ALL_PARAMETERS_FOR_SAMPLE = gql`
         id
         name
         testType
+        parameterType
+      }
+    }
+  }
+`
+
+
+// Query a Single Monitoring
+export const SINGLE_MONITORING = gql`
+  query singleMonitoring($id: ID!) {
+    monitoring(where: { id: $id }) {
+      id
+      completed
+      correlative
+      company {
+        name
       }
     }
   }

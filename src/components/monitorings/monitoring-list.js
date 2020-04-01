@@ -39,6 +39,7 @@ const MonitoringList = ({ monitorings }) => {
       monitoring => monitoring.completed === true
     )
   }
+  
   const monitoringList = []
   filteredMonitorings.forEach((monitoring, index) => {
     monitoringList.push(<MonitoringItem key={index} monitoring={monitoring} />)
