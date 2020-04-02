@@ -1,18 +1,34 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { ModalRoutingContext } from "gatsby-plugin-modal-routing"
+import styled from 'styled-components'
 
 import Header from "./header"
-import Modal from "./modal"
 import "./layout.css"
+
+const App = styled.div`
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  padding-left: 240px; /* control the navbar width */
+  margin-top: 60px;
+  transition: all 0.25s ease-in-out 0s;
+  will-change: padding-left;
+
+  .main-app{
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    width: 100%;
+    
+    .content-app{
+      padding: 20px;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1120px;
+    }
+  }
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,20 +44,16 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 1200,
-          padding: `90px 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
+      <App>
+        <main className="main-app">
+          <section className="content-app">{children}</section>
+        </main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-      </div>
+      </App>
     </>
   )
 }

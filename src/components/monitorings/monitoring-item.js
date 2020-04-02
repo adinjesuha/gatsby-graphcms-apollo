@@ -12,8 +12,7 @@ const Wrapper = styled.li`
   border: 1px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 40px;
-  max-width: 560px;
-  transition: all 0.3s ease;
+  width: 100%;
   .item__header {
     border-bottom: 1px solid var(--border-color);
     display: flex;

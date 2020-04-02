@@ -20,7 +20,7 @@
   /* for normal state icons and text */
   --grey: #b6babd;
   /* for borders */
-  --snow-dark: #efefef;
+  --snow-dark: rgb(230, 230, 230);
   /* for background UI elements */
   --snow: #fcfbfc;
   /* Borders */

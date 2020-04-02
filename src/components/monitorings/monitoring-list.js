@@ -3,16 +3,23 @@ import MonitoringFilters from "../filter-monitorings"
 import styled from "styled-components"
 
 import MonitoringItem from "./monitoring-item"
-import { Tag } from "./tag"
 import MonitoringStadistic from "./monitoring-stadistic.component"
 
 const Wrapper = styled.section`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  & > div {
+  .dashboard-grid {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
+    &__main{
+      flex: 1 0 auto;
+      max-width: 680px;
+    }
+    &__side{
+      flex: 1 0 auto;
+      max-width: 360px;
+    }
   }
 `
 
@@ -75,40 +82,44 @@ const MonitoringList = ({ monitorings }) => {
         currentFilter={state.filter}
         filterResultsFn={filterResults}
       />
-      <div>
-        <ul>{monitoringList}</ul>
-        <MonitoringStadistic>
-          <div className="stadistic-item">
-            <p>Estatus </p>
-            {state.filter === "active" ? (
-              <span className="inProgress">En progreso</span>
-            ) : state.filter === "completed" ? (
-              <span className="completed">Completado</span>
-            ) : (
-              <span className="all">Todos</span>
-            )}
-          </div>
-          <div className="stadistic-item">
-            <p>Total de monitoreos</p>
-            <span>{filteredMonitorings.length}</span>
-          </div>
-          <div className="stadistic-item">
-            <p>Total de muestras</p>
-            <span>{totalSamples}</span>
-          </div>
-          <div className="stadistic-item">
-            <p>Total de parametros</p>
-            <span>{filteredParam.length}</span>
-          </div>
-          <div className="stadistic-item">
-            <p>Pruebas rápidas</p>
-            <span>{rapidTest.length}</span>
-          </div>
-          <div className="stadistic-item">
-            <p>Pruebas tradicionales</p>
-            <span>{traditionalTest.length}</span>
-          </div>
-        </MonitoringStadistic>
+      <div className="dashboard-grid">
+        <div className="dashboard-grid__main"> 
+          <ul>{monitoringList}</ul> 
+        </div> 
+        <div className="dashboard-grid__side">
+          <MonitoringStadistic>
+            <div className="stadistic-item">
+              <p>Estatus </p>
+              {state.filter === "active" ? (
+                <span className="inProgress">En progreso</span>
+              ) : state.filter === "completed" ? (
+                <span className="completed">Completado</span>
+              ) : (
+                <span className="all">Todos</span>
+              )}
+            </div>
+            <div className="stadistic-item">
+              <p>Total de monitoreos</p>
+              <span>{filteredMonitorings.length}</span>
+            </div>
+            <div className="stadistic-item">
+              <p>Total de muestras</p>
+              <span>{totalSamples}</span>
+            </div>
+            <div className="stadistic-item">
+              <p>Total de parametros</p>
+              <span>{filteredParam.length}</span>
+            </div>
+            <div className="stadistic-item">
+              <p>Pruebas rápidas</p>
+              <span>{rapidTest.length}</span>
+            </div>
+            <div className="stadistic-item">
+              <p>Pruebas tradicionales</p>
+              <span>{traditionalTest.length}</span>
+            </div>
+          </MonitoringStadistic>
+        </div> 
       </div>
     </Wrapper>
   )

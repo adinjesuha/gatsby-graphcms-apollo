@@ -1,18 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 
-const StadisticMonitor = styled.article`
+const StadisticMonitor = styled.aside`
   background: white;
   border-radius: 8px;
   border: 1px solid var(--border-color);
   width: 100%;
-  max-width: 520px;
-  height: 100%;
-  &.sticky {
+  /* &.sticky {
     position: -webkit-sticky;
     position: sticky;
     top: 110px;
-  }
+  } */
   header {
     display: flex;
     align-items: center;

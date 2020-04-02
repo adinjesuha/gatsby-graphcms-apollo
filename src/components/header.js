@@ -3,24 +3,24 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-import Avatar from "../images/avatar.jpg"
 import { FaBell } from "react-icons/fa"
-import { FiChevronDown } from "react-icons/fi"
+import NavBar from "./nav-bar"
 
 const HeaderWrapper = styled.header`
-  position: fixed;
-  width: 100%;
-  background: white;
+  background-color: #ffffff;
   border-bottom: 1px solid var(--border-color);
-  z-index: 2;
-  nav {
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0.85rem;
+  padding: 15px 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 949;
+  .top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     .left-side {
+      margin-left: 240px; /* control the navbar width */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -54,7 +54,8 @@ const HeaderWrapper = styled.header`
       .user-options {
         margin-left: 15px;
         button:first-child {
-          margin-right: 15px;
+          margin-right: 25px;
+          font-size: 18px;
           > svg {
             color: #9fa5b8;
             fill: #9fa5b8;
@@ -71,11 +72,23 @@ const HeaderWrapper = styled.header`
           right: -2px;
         }
         .avatar {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
+          background: rgb(217, 217, 217) none repeat scroll 0% 0%;
+          width: 40px;
+          height: 40px;
           margin-right: 4px;
+          display: flex;
+          align-items: center;
+          border-radius: 50%;
+          justify-content: center;
           overflow: hidden;
+          position: relative;
+          .initials{
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 15px;
+            text-transform: uppercase;
+            color: rgb(0, 0, 0);
+          }
         }
         .icon-wrapper {
           display: inline-flex;
@@ -87,7 +100,8 @@ const HeaderWrapper = styled.header`
 
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
-    <nav>
+    <NavBar />
+    <div className="top-bar">
       <div className="left-side">
         <h1>
           {" "}
@@ -102,39 +116,24 @@ const Header = ({ siteTitle }) => (
             {siteTitle}
           </Link>
         </h1>
-        <ul className="nav-links">
-          <li>
-            <Link to="/" activeClassName="active-link">
-              Monitoreos
-            </Link>
-          </li>
-          <li>
-            <Link to="/">Análisis</Link>
-          </li>
-          <li>
-            <Link to="/">Reportes</Link>
-          </li>
-        </ul>
       </div>
       <div className="right-side">
         <div className="user-options">
-          <button className=" button ghost flex-content">
+          <button className="button ghost flex-content">
             <i className="message-alert" />
             <FaBell />
           </button>
           <button className="button ghost flex-content">
-            <span className="avatar">
-              <img src={Avatar} alt="avatar" />
-            </span>
-            <span className="icon-wrapper">
-              <FiChevronDown />
-            </span>
+            <div className="avatar">
+              <span className="initials">AJ</span>
+            </div>
           </button>
         </div>
       </div>
-    </nav>
+    </div>
   </HeaderWrapper>
 )
+
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
