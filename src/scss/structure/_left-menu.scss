@@ -62,17 +62,17 @@
   padding-bottom: 30px;
   > ul {
     > li {
-      &.mm-active {
-        > a {
-          border-left: 3px solid $menu-item-active;
-          color: $menu-item-active;
-          background-color: $menu-item-bg-hover;
-          svg {
-            color: $menu-item-active;
-            fill: rgba($menu-item-active, 0.1);
-          }
-        }
-      }
+      // &.mm-active {
+      //   > a {
+      //     border-left: 3px solid $menu-item-active;
+      //     color: $menu-item-active;
+      //     background-color: $menu-item-bg-hover;
+      //     svg {
+      //       color: $menu-item-active;
+      //       fill: rgba($menu-item-active, 0.1);
+      //     }
+      //   }
+      // }
       > a {
         color: $menu-item;
         display: block;
@@ -82,6 +82,15 @@
         position: relative;
         transition: all 0.4s;
         border-left: 3px solid transparent;
+        &.mm-active {
+          border-left: 3px solid $menu-item-active;
+          color: $menu-item-active;
+          background-color: $menu-item-bg-hover;
+          svg {
+            color: $menu-item-active;
+            fill: rgba($menu-item-active, 0.1);
+          }
+        }
 
         svg {
           display: inline-block;
@@ -349,7 +358,6 @@
           z-index: 9999;
           display: none;
           background-color: $bg-leftbar-light;
-
           li {
             &:hover {
               > ul {
@@ -488,6 +496,8 @@
     box-shadow: none;
     #sidebar-menu {
       > ul {
+        padding: 0;
+        margin-top: 0;
         > li {
           &.mm-active {
             > a {
