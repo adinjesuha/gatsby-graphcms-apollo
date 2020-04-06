@@ -3,15 +3,17 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
 
-import Header from "./header"
-import "./layout.css"
+import "../scss/bootstrap.scss"
+import "../scss/app.scss"
+
+import Topbar from './Topbar'
 
 const App = styled.div`
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
   padding-left: 240px; /* control the navbar width */
-  margin-top: 60px;
+  margin-top: 70px;
   transition: all 0.25s ease-in-out 0s;
   will-change: padding-left;
 
@@ -43,7 +45,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Topbar title={data.site.siteMetadata.title} />
       <App>
         <main className="main-app">
           <section className="content-app">{children}</section>

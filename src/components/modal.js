@@ -16,6 +16,7 @@ import {
   ADD_PARAMETER 
 } from './operations/mutations'
 import Filters from "./filters"
+import EditableLabel from "./edit-text"
 
 const Wrapper = styled.div`
   background: white;
@@ -324,6 +325,7 @@ export const Gator = ({
           <div className="sample-info">
             <h4>{sample.name}</h4>
             <p>{removeDash(sample.sampleType)}</p>
+            <EditableLabel />
           </div>
           <ParameterList sampleID={sample.id}/>
         </Body>

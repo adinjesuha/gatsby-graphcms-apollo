@@ -1,50 +1,88 @@
 import React from "react"
 import styled from "styled-components"
 
+import { FiPlus } from 'react-icons/fi'
+
 const TabFilters = styled.div`
   font-size: 14px;
-  border-bottom: 1px solid var(--border-color);
   margin-bottom: 15px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  ul {
-    margin: 0;
+  .left-side{
+    .tab-title{
+      margin: 0;
+      font-size: 19px;
+    }
+  }
+  .right-side{
     display: flex;
-    li {
-      color: #3e3f42;
-      margin: 0 15px;
+    justify-content: space-between;
+    button {
+      background-color: transparent;
+      border: 1px solid transparent;
+      border-color: #e2e7f1;
+      border-radius: .3rem;
+      color: #212529;
+      font-size: .775rem;
+      font-weight: 500;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1;
       cursor: pointer;
-      a {
-        border-bottom: 3px solid transparent;
-        &.selected {
-          font-weight: 500;
-          border-bottom-color: var(--purple);
+      display: inline-block;
+      padding: .8rem .7rem;
+      &.create{
+        background-color: var(--green);
+        border-color: var(--green);
+        margin-right: 25px;
+        color: white;
+        padding: .7rem .7rem;
+        i{
+          margin-right: .25rem !important;
+          &:before{
+            content: "+";
+            font-style: normal;
+            font-weight: 400;
+            display: inline-block;
+            text-decoration: inherit;
+            width: 1em;
+            text-align: center;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1em;
+            font-size: 120%;
+          }
+        }
+      }
+      &.selected {
+        color: white;
+        background-color: var(--purple);
+        border-color: var(--purple);
+      }
+    }
+    .tab-options {
+      margin: 0;
+      display: flex;
+      li {
+        margin: 0;
+        button{
+          border-radius: 0;
+        }
+        &:first-child button{ 
+          border-top-left-radius: .3rem;
+          border-bottom-left-radius: .3rem;
+        }
+        &:last-child button{ 
+          border-top-right-radius: .3rem;
+          border-bottom-right-radius: .3rem;
+        }
+        &:not(:first-child) button {
+          margin-left: -1px;
         }
       }
     }
-  }
-  p {
-    margin: 0;
-    span {
-      font-weight: 700;
-      background-color: var(--yellow);
-      color: white;
-      font-size: 1rem;
-      border-radius: 4px;
-      margin-right: 5px;
-      height: 34px;
-      width: 34px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  a {
-    height: 56px;
-    display: flex;
-    align-items: center;
   }
 `
 
@@ -69,28 +107,49 @@ const MonitoringFilters = ({ monitorings, currentFilter, filterResultsFn }) => {
 
   return (
     <TabFilters>
-      <p>
+      {/*<p>
         <span>{itemCount}</span> Monitoreo
         {itemCount !== 1 ? "s" : ""}
-      </p>
+      </p>*/}
+      <div className="left-side">
+        <h4 className="tab-title">Lista de monitoreos</h4>
+      </div>
+      <div className="right-side">
+        <button className="create">
+          <i />
+          Crear Monitoreo
+        </button>
+        <ul className="tab-options">
+          <li>
+            <button 
+              onClick={filterResultsHandler("active")} 
+              className={currentFilter === "active" ? "selected" : ""}
+            >
+              En progreso
+            </button>
+          </li>
 
-      <ul>
-        <li onClick={filterResultsHandler("active")}>
-          <a className={currentFilter === "active" ? "selected" : ""}>
-            En progreso
-          </a>
-        </li>
+          <li>
+            <button
+              onClick={filterResultsHandler("completed")}
+              className={currentFilter === "completed" ? "selected" : ""}
+            >
+              Completados
+            </button>
+          </li>
 
-        <li onClick={filterResultsHandler("completed")}>
-          <a className={currentFilter === "completed" ? "selected" : ""}>
-            Completados
-          </a>
-        </li>
+          <li>
+            <button
+              onClick={filterResultsHandler("all")}
+              className={currentFilter === "all" ? "selected" : ""}
+            >
+              Todos
+            </button>
+          </li>
 
-        <li onClick={filterResultsHandler("all")}>
-          <a className={currentFilter === "all" ? "selected" : ""}>Todos</a>
-        </li>
-      </ul>
+        </ul>
+      </div>
+
       
     </TabFilters>
   )

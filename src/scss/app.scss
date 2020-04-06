@@ -1,0 +1,22 @@
+//Fonts
+/* 1. Fonts */
+
+//Core files
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "variables";
+@import "../../node_modules/bootstrap/scss/mixins.scss";
+
+// Structure
+/* 2. General */
+@import "structure/general";
+/* 3. Left Menu */
+@import "structure/left-menu";
+/* 4. Topbar */
+@import "structure/topbar";
+/* 5. Page Head */
+@import "structure/page-head";
+/* 6. Footer */
+@import "structure/footer";
+/* 9. Layouts */
+@import "structure/layouts";

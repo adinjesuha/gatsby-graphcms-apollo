@@ -4,11 +4,12 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `ABT Demo`,
-    description: `Demo for ABT Lab Web App.`,
-    author: `@gatsbyjs`,
+    title: `Connect`,
+    description: `Demo Web App.`,
+    author: `@adinjesuha`,
   },
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-theme-apollo`,
     `gatsby-plugin-styled-components`,

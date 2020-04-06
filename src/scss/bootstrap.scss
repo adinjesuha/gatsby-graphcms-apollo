@@ -1,0 +1,24 @@
+//Core files
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "variables";
+@import "../../node_modules/bootstrap/scss/mixins.scss";
+
+//Components
+@import "components/accordions";
+@import "components/alerts";
+@import "components/badge";
+@import "components/backgrounds";
+@import "components/breadcrumb";
+@import "components/buttons";
+@import "components/card";
+@import "components/dropdown";
+@import "components/forms";
+@import "components/modal";
+@import "components/nav";
+@import "components/pagination";
+@import "components/popover";
+@import "components/progress";
+@import "components/reboot";
+@import "components/tables";
+@import "components/type";

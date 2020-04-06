@@ -80,10 +80,9 @@ const Wrapper = styled.nav`
         flex: 1 0 auto;
         .nav-links {
           padding: 0 20px;
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 500;
           min-height: 60px;
-          /* border-bottom: 1px solid var(--border-color); */
           display: flex;
           align-items: center;
           text-decoration: none;
