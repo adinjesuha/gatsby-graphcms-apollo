@@ -1,0 +1,28 @@
+//
+// custom-styles.scss
+//
+
+// Custom styles
+.custom-check-box {
+  position: relative;
+  pointer-events: none;
+  &.active-check-box {
+    pointer-events: auto;
+  }
+  .custom-input {
+    position: absolute;
+    visibility: hidden;
+  }
+  .custom-label {
+    position: relative;
+    display: block;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 0;
+    > span {
+      display: block;
+    }
+  }
+}

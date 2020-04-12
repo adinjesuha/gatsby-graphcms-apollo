@@ -13,10 +13,6 @@
   background-color: $bg-topbar-light;
   box-shadow: $box-shadow-sm;
 
-  .dropdown-toggle::after {
-    content: none;
-  }
-
   .topnav-menu {
     > li {
       float: left;

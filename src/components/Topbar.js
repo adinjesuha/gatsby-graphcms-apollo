@@ -9,7 +9,8 @@ import {
   FiSettings, 
   FiUser,
   FiHelpCircle,
-  FiLogOut
+  FiLogOut,
+  FiLifeBuoy
 } from 'react-icons/fi'
 import NotificationDropdown from './NotificationDropdown'
 import ProfileDropdown from './ProfileDropdown'
@@ -78,6 +79,7 @@ const Topbar = ({title}) => {
         <Link to="/" className="navbar-brand mr-0 mr-md-2 logo">
           <span className="logo-lg">
             {/*<img src={logo} alt="" height="24" />*/}
+            <FiLifeBuoy  className="mb-1"/>
             <span className="d-inline h5 ml-2 text-logo">{title}</span>
           </span>
           <span className="logo-sm">

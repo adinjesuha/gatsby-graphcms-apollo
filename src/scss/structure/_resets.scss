@@ -9,3 +9,7 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+
+.dropdown-toggle::after {
+  content: none !important;
+}
