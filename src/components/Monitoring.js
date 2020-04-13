@@ -11,248 +11,9 @@ import {
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import classNames from 'classnames';
-
+import { removeDash } from '../utils/removeDash'
 import UIModal from './UIModal';
-
-const Monitorings = [{
-		id: 1,
-		state: 'Finalizado',
-		company: 'AgrobioTek',
-		correlative: '001-02-01',
-
-		progress: 100,
-		dueDate: '15 Dec',
-		totalTasks: 21,
-		totalComments: 741,
-		totalMembers: 10,
-
-		samples: [
-			{
-				id: 1,
-				name: 'Pizza',
-				type: 'Materia Prima',
-				parameters: [
-					{
-						id: 1,
-						name: 'E. coli',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 2,
-						name: 'Coliformes totales',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 3,
-						name: 'Salmonella spp.',
-						testType: 'Prueba rápida',
-						parameterType: 'Patógeno'
-					},
-					{
-						id: 4,
-						name: 'E. coli O157:H7',
-						testType: 'Prueba rápida',
-						parameterType: 'Patógeno'
-					}
-				],
-			},
-			{
-				id: 2,
-				name: 'Juan Valdez',
-				type: 'Hisopado de Manos',
-				parameters: [
-					{
-						id: 1,
-						name: 'E. coli',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 2,
-						name: 'Coliformes fecales',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 3,
-						name: 'Listeria spp.',
-						testType: 'Prueba tradicional',
-						parameterType: 'Patógeno'
-					},
-				],
-			}
-		]
-	},
-	{
-		id: 2,
-		state: 'En progreso',
-		company: 'Alimentos Maravilla',
-		correlative: '002-02-01',
-
-		progress: 33,
-		dueDate: '15 Dec',
-		totalTasks: 21,
-		totalComments: 741,
-		totalMembers: 10,
-
-		samples: [
-			{
-				id: 1,
-				name: 'Jugo de Naranja',
-				type: 'Alimento',
-				parameters: [
-					{
-						id: 1,
-						name: 'E. coli',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 2,
-						name: 'Coliformes fecales',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 3,
-						name: 'E. coli O157:H7',
-						testType: 'Prueba rápida',
-						parameterType: 'Patógeno'
-					},
-				],
-			},
-			{
-				id: 2,
-				name: 'Tabla de picar',
-				type: 'Hisopado de Superficie',
-				parameters: [
-					{
-						id: 1,
-						name: 'Coliformes totales',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 2,
-						name: 'Mohos y Levaduras',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 3,
-						name: 'Staphylococcus aureus',
-						testType: 'Prueba rápida',
-						parameterType: 'Patógeno',
-					},
-					{
-						id: 4,
-						name: 'Listeria spp.',
-						testType: 'Prueba tradicional',
-						parameterType: 'Patógeno'
-					},
-				],
-			},
-			{
-				id: 3,
-				name: 'Tabla de picar',
-				type: 'Hisopado de Superficie',
-				parameters: [
-					{
-						id: 1,
-						name: 'Coliformes totales',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 2,
-						name: 'Mohos y Levaduras',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 3,
-						name: 'Staphylococcus aureus',
-						testType: 'Prueba rápida',
-						parameterType: 'Patógeno',
-					},
-					{
-						id: 4,
-						name: 'Listeria spp.',
-						testType: 'Prueba tradicional',
-						parameterType: 'Patógeno'
-					},
-				],
-			},
-			{
-				id: 4,
-				name: 'Tabla de picar',
-				type: 'Hisopado de Superficie',
-				parameters: [
-					{
-						id: 1,
-						name: 'Coliformes totales',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 2,
-						name: 'Mohos y Levaduras',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 3,
-						name: 'Staphylococcus aureus',
-						testType: 'Prueba rápida',
-						parameterType: 'Patógeno',
-					},
-					{
-						id: 4,
-						name: 'Listeria spp.',
-						testType: 'Prueba tradicional',
-						parameterType: 'Patógeno'
-					},
-				],
-			},
-		]
-	},
-	{
-		id: 3,
-		state: 'Planificado',
-		company: 'Lacthosa Norte',
-		correlative: '003-02-01',
-
-		progress: 0,
-		dueDate: '15 Dec',
-		totalTasks: 21,
-		totalComments: 741,
-		totalMembers: 10,
-
-		samples: [
-			{
-				id: 1,
-				name: 'Leche en Polvo',
-				type: 'Alimento',
-				parameters: [
-					{
-						id: 1,
-						name: 'Coliformes totales',
-						testType: 'Prueba rápida',
-						parameterType: 'Indicador'
-					},
-					{
-						id: 2,
-						name: 'Coliformes fecales',
-						testType: 'Prueba tradicional',
-						parameterType: 'Indicador'
-					},
-				],
-			},
-		]
-	},
-]
+import DoneMonitoring from './DoneMonitoring';
 
 const Sample = ({ sample, company }) => {
 	return (
@@ -260,7 +21,7 @@ const Sample = ({ sample, company }) => {
 			<div className="media">
 				<div className="media-body">
 					<h6 className="mt-1 mb-0 font-size-15">{sample.name}</h6>
-					<h6 className="text-muted font-weight-normal mt-1">{sample.sampleType}</h6>
+					<h6 className="text-muted font-weight-normal mt-1">{removeDash(sample.sampleType)}</h6>
 				</div>
 				<div className="float-right mt-1">
 					<UIModal 
@@ -275,7 +36,6 @@ const Sample = ({ sample, company }) => {
 }
 
 const Monitoring = ({monitoring}) => {
-	const data = Monitorings
 
 	console.log(monitoring)
 	
@@ -343,13 +103,10 @@ const Monitoring = ({monitoring}) => {
 					</Col>
 					<Col className="col-sm-6">
 						<div className="text-right">
-							<Button 
-								disabled={data.state === "Finalizado"}
-								color={data.state !== "Finalizado" ? "primary" : "secondary"} 
-								onClick={() => console.log('disabled')}
-							>
-								Procesar
-							</Button>
+							<DoneMonitoring 
+								id={monitoring.id}
+								completed={monitoring.completed}
+							/>
 						</div>
 					</Col>
 				</Row>

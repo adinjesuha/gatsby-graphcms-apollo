@@ -8,7 +8,7 @@ import { ALL_MONITORINGS } from "./operations/queries"
 
 const Monitorings = ({ monitorings }) => {
   const [state, setState] = useState({
-    filter: "active",
+    filter: "all",
   })
 
   const filterResults = filter => {

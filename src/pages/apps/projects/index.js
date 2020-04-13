@@ -2,7 +2,7 @@ import React from "react"
 import { Row, Col, Button } from 'reactstrap';
 
 import Layout from "../../../components/Layout"
-import SEO from "../../../components/seo"
+import SEO from "../../../components/Seo"
 
 import { 
   FiLoader, 

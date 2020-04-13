@@ -8,6 +8,12 @@
   pointer-events: none;
   &.active-check-box {
     pointer-events: auto;
+    .custom-label {
+      color: red;
+      span {
+        color: red !important;
+      }
+    }
   }
   .custom-input {
     position: absolute;

@@ -1,10 +1,11 @@
 import React from "react"
 import { useMutation } from "@apollo/react-hooks"
+import { Button } from "reactstrap"
 
 import { ALL_MONITORINGS } from "./operations/queries"
 import { UPDATE_MONITORING_STATE } from "./operations/mutations"
 
-const MakeDone = ({ id, completed, ...otherProps }) => {
+const DoneMonitoring = ({ id, completed, ...otherProps }) => {
   const [toggleCompletedMutation, { loading }] = useMutation(
     UPDATE_MONITORING_STATE,
     {
@@ -14,13 +15,21 @@ const MakeDone = ({ id, completed, ...otherProps }) => {
     }
   )
   return (
-    <button
-      className={otherProps.classNames}
+    <Button 
+      disabled={completed}
+      color={completed ? "secondary" : "primary"} 
       onClick={() => toggleCompletedMutation()}
     >
-      {loading ? "Completando..." : completed ? "Completado" : "Completar"}
-    </button>
+    {loading ? (
+      <React.Fragment>
+        <span class="mr-2 mb-1 spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+        Procesando...
+      </React.Fragment>
+    ) : completed ? "Procesado" : "Procesar"}
+    </Button>
   )
 }
 
-export default MakeDone
+export default DoneMonitoring
+
+

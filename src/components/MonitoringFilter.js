@@ -3,6 +3,7 @@ import { Row, Col } from "reactstrap"
 import classNames from 'classnames'
 
 const MonitoringFilter = ({ monitorings, currentFilter, filterResultsFn }) => {
+  
   const filterResultsHandler = filter => {
     return () => {
       filterResultsFn(filter)
