@@ -9,6 +9,15 @@ export const UPDATE_MONITORING_STATE = gql`
   }
 `
 
+// Update Sample status
+export const UPDATE_SAMPLE_STATE = gql`
+  mutation toggleSampleState($id: ID!) {
+    updateSample(where: { id: $id }, data: { completed: true }) {
+      status
+    }
+  }
+`
+
 // Add parameter to a single sample
 export const ADD_PARAMETER = gql`
   mutation addParameter($sampleID: ID!, $parameterID: ID!) {

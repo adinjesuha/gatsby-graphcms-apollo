@@ -11,6 +11,7 @@ import {
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import classNames from 'classnames';
+
 import { removeDash } from '../utils/removeDash'
 import UIModal from './UIModal';
 import DoneMonitoring from './DoneMonitoring';
@@ -37,7 +38,11 @@ const Sample = ({ sample, company }) => {
 
 const Monitoring = ({monitoring}) => {
 
-	console.log(monitoring)
+	// Total of samples 100%
+	const totalSamples = monitoring.samples.length
+	const samplesCompleted = monitoring.samples.filter(sample => sample.completed)
+	// Percentage calculation
+	let percentage = Math.floor((samplesCompleted.length / totalSamples) * 100)
 	
 	return(
 		<Card>
@@ -47,17 +52,21 @@ const Monitoring = ({monitoring}) => {
 				<div className={classNames(
 					'badge', 'float-right',
 					{
-						'badge-success': monitoring.completed === true,
-						'badge-info': monitoring.completed === false,
+						'badge-success': percentage === 100,
+						'badge-warning': percentage > 1 && percentage < 100,
+						'badge-info': percentage < 1,
 					}
 					)}>
-					{monitoring.completed ? 'Finalizado' : 'En Progreso'}
+					{monitoring.completed ? 'Finalizado' : (
+						percentage < 1 ? 'Planificado' : 'En Progreso'
+					)}
 				</div>
 				<div>
 					<p className={classNames("font-size-12", "mb-1",
 						{
-							'text-success': monitoring.completed === true,
-							'text-info': monitoring.completed === false,
+							'text-success': percentage === 100,
+							'text-warning': percentage > 1 && percentage < 100,
+							'text-info': percentage < 1,
 					})}>{monitoring.correlative}</p>
 					<h5>
 						<Link to="/" className="text-dark">
@@ -80,30 +89,31 @@ const Monitoring = ({monitoring}) => {
 			<CardBody className="border-top p-3 pl-4 pr-4">
 				<Row className="align-items-center">
 					<Col className="col-sm-6">
-					{/*{(data.samples.length * 10) < 30 && (
+					{percentage < 30 && (
 						<Progress 
-							value={(data.samples.length * 10)} 
+							value={percentage} 
 							color="warning" 
 							className="progress-sm" 
 						/>
 					)}
-					{(data.samples.length * 10) > 30 && (data.samples.length * 10) < 100 && (
+					{percentage > 30 && percentage < 100 && (
 						<Progress 
-							value={(data.samples.length * 10)} 
+							value={percentage} 
 							color="info"
 							className="progress-sm" />
 					)}
-					{(data.samples.length * 10) === 100 && (
+					{percentage === 100 && (
 						<Progress 
-							value={(data.samples.length * 10)} 
+							value={percentage} 
 							color="success" 
 							className="progress-sm" 
 						/>
-					)}*/}
+					)}
 					</Col>
 					<Col className="col-sm-6">
 						<div className="text-right">
-							<DoneMonitoring 
+							<DoneMonitoring
+								percentage={percentage}
 								id={monitoring.id}
 								completed={monitoring.completed}
 							/>

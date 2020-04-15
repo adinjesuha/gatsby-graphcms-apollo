@@ -16,13 +16,17 @@ const DoneMonitoring = ({ id, completed, ...otherProps }) => {
   )
   return (
     <Button 
-      disabled={completed}
-      color={completed ? "secondary" : "primary"} 
+      disabled={completed || otherProps.percentage < 100}
+      color={completed ? "secondary" : "primary"}
       onClick={() => toggleCompletedMutation()}
     >
     {loading ? (
       <React.Fragment>
-        <span class="mr-2 mb-1 spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+        <span 
+          role="status" 
+          className="mr-2 mb-1 spinner-border spinner-border-sm" 
+          aria-hidden="true" 
+        />
         Procesando...
       </React.Fragment>
     ) : completed ? "Procesado" : "Procesar"}

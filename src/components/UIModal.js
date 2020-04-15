@@ -20,7 +20,7 @@ import classNames from 'classnames';
 import { useMutation, useQuery } from '@apollo/react-hooks'
 
 import { removeDash } from '../utils/removeDash'
-import { REMOVE_PARAMETER, ADD_PARAMETER } from './operations/mutations'
+import { REMOVE_PARAMETER, ADD_PARAMETER, UPDATE_SAMPLE_STATE } from './operations/mutations'
 import { ALL_MONITORINGS, ALL_PARAMETERS } from './operations/queries'
 
 const AllParameters = ({sampleID, parameter}) => {
@@ -34,7 +34,7 @@ const AllParameters = ({sampleID, parameter}) => {
   )
   return(
     <div 
-      className='custom-check-box border active-check-box border-success rounded mb-3'
+      className='custom-check-box active-check-box border border-success bg-soft-success rounded mb-3'
     >
       <input 
         type="checkbox"
@@ -45,21 +45,19 @@ const AllParameters = ({sampleID, parameter}) => {
       />
       {loading ? (
         <label 
-        className="custom-label" 
+        className="custom-label text-success" 
         htmlFor={`check-for-${parameter.name}`}
       >
-        <span class="mr-2 mb-1 spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+        <span className="mr-2 mb-1 spinner-border spinner-border-sm text-success" role="status" aria-hidden="true" />
         Agregando...
       </label>
       ) : (
         <label  
-          className="custom-label" 
+          className="custom-label text-success" 
           htmlFor={`check-for-${parameter.name}`}
         >
           {parameter.name}
-          <span className="text-muted font-size-13 mt-1" style={{
-            display: 'block',
-          }}>Prueba {parameter.testType}</span>
+          <span className="text-success font-size-13 mt-1">Prueba {parameter.testType}</span>
         </label>
       )}
     </div>
@@ -71,8 +69,6 @@ const Params = ({sampleID, actualParams}) => {
   const [ activeTab, setActiveTab ] = useState('indicadores')
 
   const { loading, error, data } = useQuery(ALL_PARAMETERS)
-
-  
 
   const toggleTab = tab => {
     if (activeTab !== tab) {
@@ -201,8 +197,8 @@ const ActualParameters = ({parameter, editParams, sampleID, disabledButton}) => 
   return(
     <div 
       className={classNames(
-        'custom-check-box border rounded mb-3',
-        { 'active-check-box border-danger': editParams }
+        'custom-check-box rounded mb-3 border',
+        { 'active-check-box border-danger bg-soft-danger': editParams }
       )}
     >
       <input 
@@ -215,21 +211,27 @@ const ActualParameters = ({parameter, editParams, sampleID, disabledButton}) => 
       />
       {loading ? (
         <label 
-        className="custom-label" 
+        className="custom-label text-danger" 
         htmlFor={`check-for-${parameter.name}`}
       >
-        <span class="mr-2 mb-1 spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+        <span class="mr-2 mb-1 spinner-border spinner-border-sm text-danger" role="status" aria-hidden="true" />
         Eliminando...
       </label>
       ) : (
         <label 
-          className="custom-label" 
+          className={classNames(
+            'custom-label',
+            { 'text-danger': editParams }
+          )}
           htmlFor={`check-for-${parameter.name}`}
         >
           {parameter.name}
-          <span className="text-muted font-size-13 mt-1" style={{
-            display: 'block',
-          }}>Prueba {parameter.testType}</span>
+          <span 
+            className={classNames(
+              'text-danger font-size-13 mt-1',
+              { 'text-muted': !editParams }
+            )}
+          >Prueba {parameter.testType}</span>
         </label>
       )}
     </div>
@@ -243,6 +245,15 @@ const UIModal = ({btnTitle, sample }) => {
     className: null
   })
   const [ editParams, setEditParams ] = useState(false);
+
+  const [toggleCompletedMutation, { loading }] = useMutation(
+    UPDATE_SAMPLE_STATE,
+    {
+      variables: { id: sample.id },
+      refetchQueries: [{ query: ALL_MONITORINGS }],
+      awaitRefetchQueries: true,
+    }
+  )
 
   /**
    * Show/hide the modal
@@ -322,14 +333,29 @@ const UIModal = ({btnTitle, sample }) => {
 
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>Procesar muestra</Button>
+          {!sample.completed && (
+            <Button 
+                color="danger"
+                onClick={() => setEditParams(!editParams)}
+              >
+              {editParams ? 'Cerrar edición' : 'Editar muestra'}
+            </Button>
+          )}
           <Button 
-              color="danger"
-              onClick={() => setEditParams(!editParams)}
-            >
-            {editParams ? 'Cerrar edición' : 'Editar muestra'}
+            disabled={sample.completed}
+            color="primary"
+            onClick={() => toggleCompletedMutation()}
+          >
+          {loading ? (
+            <React.Fragment>
+              <span 
+                role="status" 
+                className="mr-2 mb-1 spinner-border spinner-border-sm" 
+                aria-hidden="true" />
+              Procesando...
+            </React.Fragment>
+          ) : sample.completed ? "Muestra procesada" : "Procesar muestra"}
           </Button>
-          <Button color="secondary" className="ml-1" onClick={toggle}>Cancelar</Button>
         </ModalFooter>
       </Modal> 
     </React.Fragment>
