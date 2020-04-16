@@ -5,8 +5,7 @@ import {
 	CardBody, 
 	Row,
 	Col,
-	Progress,
-	Button
+	Progress
 } from 'reactstrap'
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';

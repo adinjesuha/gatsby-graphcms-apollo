@@ -38,7 +38,12 @@ const NotificationDropdown = ({notifications, ...otherProps}) => {
           <span className="noti-icon-badge" />
         </DropdownToggle>
         <DropdownMenu right className="dropdown-lg">
-          <div onClick={toggleDropdown}>
+          <div 
+            onClick={toggleDropdown}
+            onKeyDown={toggleDropdown}
+            role="button"
+            tabIndex={0}
+          >
             <div className="dropdown-item noti-title border-bottom">
               <h5 className="m-0 font-size-16">
                 <span className="float-right">

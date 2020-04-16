@@ -12,13 +12,9 @@ import {
   FiMail, 
   FiPrinter, 
   FiFile,
-  FiFileText,
-  FiUsers,
-  FiImage, 
-  FiShoppingBag 
+  FiFileText
 } from 'react-icons/fi';
 
-import OverviewWidget from '../components/OverviewWidget';
 import Statistics from '../components/Dashboard/Statistics';
 import RevenueChart from '../components/Dashboard/RevenueChart';
 import TargetChart from '../components/Dashboard/TargetChart';
@@ -68,18 +64,10 @@ const IndexPage = () => {
         <Statistics />
         {/* charts */}
         <Row>
-          <Col xl={3}>
-            <OverviewWidget items={[
-              { title: '121,000', description: 'Total Visitors', icon: FiUsers },
-              { title: '21,000', description: 'Product Views', icon: FiImage },
-              { title: '$21.5', description: 'Revenue Per Visitor', icon: FiShoppingBag }
-            ]}></OverviewWidget>
-          </Col>
-
           <Col xl={6}>
             <RevenueChart />
           </Col>
-          <Col xl={3}>
+          <Col xl={6}>
             <TargetChart />
           </Col>
         </Row>

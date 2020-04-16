@@ -37,29 +37,28 @@ const SalesChart = () => {
         vertical: 3
       }
     },
-    labels: ['Clothes 44k', 'Smartphons 55k', 'Electronics 41k', 'Other 17k'],
+    labels: ['Indicadores', 'Patógenos', 'Micotoxinas', 'Serologia'],
     responsive: [{
-        breakpoint: 480,
-        options: {
-            
-            legend: {
-                position: 'bottom'
-            }
+      breakpoint: 480,
+      options: {
+        legend: {
+          position: 'bottom'
         }
+      }
     }],
     tooltip: {
       y: {
-        formatter: function(value) { return value + "k" }
+        formatter: function(value) { return value + "%" }
       },
     }
   };
 
-  const data = [44, 55, 41, 17];
+  const data = [35, 30, 25, 10];
 
   return (
     <Card>
       <CardBody className="">
-        <h5 className="card-title mt-0 mb-0 header-title">Sales By Category</h5>
+        <h5 className="card-title mt-0 mb-0 header-title">Parametros por Categoria</h5>
         <Chart
           options={options}
           series={data}

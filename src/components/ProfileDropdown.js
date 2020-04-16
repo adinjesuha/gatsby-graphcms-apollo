@@ -28,7 +28,12 @@ const ProfileDropdown = ({menuItems, ...otherProps}) => {
         </div>
       </DropdownToggle>
       <DropdownMenu right className="topbar-dropdown-menu profile-dropdown-items">
-        <div onClick={toggleDropdown}>
+        <div 
+          onClick={toggleDropdown}
+          onKeyDown={toggleDropdown}
+          role="button"
+          tabIndex={0}
+        >
           {menuItems.map((item, i) => {
             const Icon = item.icon;
             return (

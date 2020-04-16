@@ -10,8 +10,8 @@ const Statistics = () => {
       <Row>
         <Col md={6} xl={3}>
           <StatisticsChartWidget
-            description="Today Revenue"
-            title="$2100"
+            description="Indicadores"
+            title="1130"
             data={[25, 66, 41, 85, 63, 25, 44, 12, 36, 9, 54]}
             trend={{
               textClass: 'text-success',
@@ -23,10 +23,10 @@ const Statistics = () => {
 
         <Col md={6} xl={3}>
           <StatisticsChartWidget
-            description="Product Sold"
-            title="1065"
+            description="Patógenos"
+            title="1005"
             colors={['#f77e53']}
-            data={[25, 66, 41, 85, 63, 25, 44, 12, 36, 9, 54]}
+            data={[25, 66, 56, 85, 53, 35, 44, 12, 36, 9, 54]}
             trend={{
               textClass: 'text-danger',
               icon: FiArrowDown,
@@ -37,8 +37,8 @@ const Statistics = () => {
 
         <Col md={6} xl={3}>
           <StatisticsChartWidget
-            description="New Customers"
-            title="11"
+            description="Micotoxinas"
+            title="390"
             colors={['#43d39e']}
             data={[25, 66, 41, 85, 63, 25, 44, 12, 36, 9, 54]}
             trend={{
@@ -51,8 +51,8 @@ const Statistics = () => {
 
         <Col md={6} xl={3}>
           <StatisticsChartWidget
-            description="New Visitors"
-            title="750"
+            description="Monitoreos"
+            title="45"
             colors={['#ffbe0b']}
             data={[25, 66, 41, 85, 63, 25, 44, 12, 36, 9, 54]}
             trend={{

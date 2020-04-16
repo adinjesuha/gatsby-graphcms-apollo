@@ -21,7 +21,7 @@ const RevenueChart = () => {
 
   const apexLineChartWithLables = {
     chart: {
-      height: 296,
+      height: 300,
       type: 'area',
       toolbar: {
         show: false,
@@ -60,11 +60,7 @@ const RevenueChart = () => {
       labels: { }
     },
     yaxis: {
-      labels: {
-        formatter: function (val) {
-          return val + "k"
-        }
-      }
+      labels: {}
     },
     fill: {
       type: 'gradient',
@@ -84,7 +80,7 @@ const RevenueChart = () => {
   };
 
   const apexLineChartWithLablesData = [{
-    name: 'Revenue',
+    name: 'Parametros',
     data: [10, 20, 5, 15, 10, 20, 15, 25, 20, 30, 25, 40, 30, 50, 35]
   }];
 
@@ -93,23 +89,20 @@ const RevenueChart = () => {
       <CardBody className="pb-0">
         <Nav className="card-nav float-right">
           <NavItem>
-            <NavLink className="text-muted" href="#">Today</NavLink>
+            <NavLink className="text-muted" href="#">Hoy</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink className="text-muted" href="#">7d</NavLink>
+            <NavLink className="text-muted" href="#">7 dias</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink className="" active href="#">15d</NavLink>
+            <NavLink className="" active href="#">15 dias</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink className="text-muted" href="#">1m</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className="text-muted" href="#">1y</NavLink>
+            <NavLink className="text-muted" href="#">1mes</NavLink>
           </NavItem>
         </Nav>
 
-        <h5 className="card-title mb-0 header-title">Revenue</h5>
+        <h5 className="card-title mb-0 header-title">Parametros</h5>
 
         <Chart
           options={apexLineChartWithLables}
