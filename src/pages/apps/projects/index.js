@@ -11,7 +11,7 @@ import MonitoringListing from "../../../components/MonitoringListing";
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Apps/Monitoreos" />
+    <SEO title="Monitoreos" />
     <React.Fragment>
 
       <MonitoringListing />

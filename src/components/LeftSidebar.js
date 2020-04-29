@@ -6,7 +6,9 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 import { 
   FiHome, 
   FiCalendar, 
-  FiBriefcase 
+  FiBriefcase,
+  FiFileText,
+  FiEye
 } from 'react-icons/fi'
 import AppMenu from './AppMenu';
 
@@ -38,11 +40,27 @@ const projectAppRoutes = {
   },
 };
 
+const invoiceAppRoutes = {
+  id: 4,
+  path: '/apps/invoice',
+  name: 'Facturación',
+  icon: FiFileText,
+};
+
+const analisisAppRoutes = {
+  id: 5,
+  path: '/apps/analysis',
+  name: 'Análisis',
+  icon: FiEye,
+};
+
 const menu = {
   menuItems:[
     dashboardRoutes, 
     calendarAppRoutes,
     projectAppRoutes,
+    analisisAppRoutes,
+    invoiceAppRoutes,
   ]
 }
 
