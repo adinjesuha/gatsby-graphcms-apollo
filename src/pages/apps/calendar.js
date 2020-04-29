@@ -16,28 +16,49 @@ const IndexPage = () => {
   const events = [
     {
       id: 1,
-      title: 'Meeting with Mr. Shreyu!',
+      title: 'Lacthosa Norte',
       start: new Date().setDate(new Date().getDate() + 1),
       end: new Date().setDate(new Date().getDate() + 2),
       className: 'bg-warning text-white',
     },
     {
       id: 2,
-      title: 'See John Deo',
+      title: 'Empacadora San Lorenzo',
       start: new Date(),
       end: new Date(),
       className: 'bg-success text-white',
     },
     {
       id: 3,
-      title: 'Meet John Deo',
+      title: 'Alimentos Maravilla',
       start: new Date().setDate(new Date().getDate() + 8),
       className: 'bg-info text-white',
     },
     {
       id: 4,
-      title: 'Buy a Theme',
+      title: 'Industrial de Alimentos',
       start: new Date().setDate(new Date().getDate() + 7),
+      className: 'bg-primary text-white',
+    },
+    {
+      id: 5,
+      title: 'Panificadora Tabora',
+      start: new Date(),
+      end: new Date(),
+      className: 'bg-primary text-white',
+    },
+    {
+      id: 6,
+      title: 'Panificadora Tabora',
+      start: new Date(),
+      end: new Date(),
+      className: 'bg-primary text-white',
+    },
+    {
+      id: 7,
+      title: 'Panificadora Tabora',
+      start: new Date(),
+      end: new Date(),
       className: 'bg-primary text-white',
     },
   ];

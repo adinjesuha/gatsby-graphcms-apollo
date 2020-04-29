@@ -12,20 +12,7 @@ import MonitoringListing from "../../../components/MonitoringListing";
 const IndexPage = () => (
   <Layout>
     <SEO title="Monitoreos" />
-    <React.Fragment>
-
-      <MonitoringListing />
-
-      <Row className="mb-3 mt-2">
-        <Col>
-          <div className="text-center">
-            <Button color="white">
-              <FiLoader className="icon-dual icon-xs mr-2"/>Load more
-            </Button>
-          </div>
-        </Col>
-      </Row>
-    </React.Fragment>
+    <MonitoringListing />
   </Layout>
 )
 
