@@ -1,14 +1,6 @@
 import React from 'react';
 import { Card, CardBody, Table } from 'reactstrap';
 
-const records = [
-	{ id: 1, parameter: 'E. coli', results: 'valor', username: 'valor' },
-	{ id: 2, parameter: 'Coliformes totales', results: 'valor', username: 'valor' },
-	{ id: 3, parameter: 'Mohos y Levaduras', results: 'valor', username: 'valor' },
-	{ id: 4, parameter: 'Salmonella spp.', results: 'valor', username: 'valor' },
-	{ id: 5, parameter: 'Listeria Monocytogenes', results: 'valor', username: 'valor' },
-];
-
 const StripedRowsTable = ({ sampleName, sampleType, parameters }) => (
 	<React.Fragment>
 		<h4 className="header-title mt-0 mb-1">{sampleName}</h4>
